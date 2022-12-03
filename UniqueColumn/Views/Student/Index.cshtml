@@ -1,0 +1,42 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["success"] != null)
+{
+    <span class="text-success">@TempData["success"]</span>
+}
+else if (TempData["error"] != null)
+{
+    <span class="text-danger">@TempData["error"]</span>
+}
+
+<form asp-controller="Student" asp-action="Save" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PhoneNo"></label>
+        <input type="text" asp-for="PhoneNo" class="form-control">
+        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input type="text" asp-for="Email" class="form-control">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success my-2">Submit</button>
+</form>
+
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}
